@@ -1,0 +1,100 @@
+<!-- Validation failure messages -->
+<% if @recipe.errors.any? %>
+  <% @recipe.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Recipe</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_recipe" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for recipe_name -->
+      <div class="form-group">
+        <label for="recipe_name" class="control-label">
+          Recipe name
+        </label>
+
+        <input type="text" id="recipe_name" name="recipe_name" placeholder="Recipe name" class="form-control" value="<%= @recipe.recipe_name %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+<!--MAKE THIS A HIDDEN FIELD THAT'S AUTO-FILLED BASED ON WHO IS SIGNED IN-->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @recipe.user_id %>">
+      </div>
+      
+
+      
+      
+      
+      
+
+
+      <!-- Label and input for genre_id -->
+      <div class="form-group">
+        <label for="genre_id" class="control-label">
+          Genre
+        </label>
+        <%= select_tag("genre_id", options_from_collection_for_select(Genre.all, :id, :genre_name, 1), :class => "form-control") %>
+      </div>
+      
+    
+      <!-- Label and input for ingredients -->
+      <div class="form-group">
+        <label for="ingredients" class="control-label">
+          Ingredients
+        </label>
+
+        <input type="text" id="ingredient_id" name="ingredient_id" placeholder="Ingredients" class="form-control" value="<%= @recipes_ingredients[0] %>"
+      </div>
+
+
+      <!-- Label and input for prep_time -->
+      <div class="form-group">
+        <label for="prep_time" class="control-label">
+          Prep time
+        </label>
+
+        <input type="text" id="prep_time" name="prep_time" placeholder="Prep time" class="form-control" value="<%= @recipe.prep_time %>">
+      </div>
+
+      <!-- Label and input for decription -->
+      <div class="form-group">
+        <label for="decription" class="control-label">
+          Decription
+        </label>
+
+        <textarea id="decription" name="decription" placeholder="Decription" class="form-control" rows="3"><%= @recipe.decription %></textarea>
+      </div>
+
+      <!-- Label and input for recipe_text -->
+      <div class="form-group">
+        <label for="recipe_text" class="control-label">
+          Recipe text
+        </label>
+
+        <textarea id="recipe_text" name="recipe_text" placeholder="Recipe text" class="form-control" rows="3"><%= @recipe.recipe_text %></textarea>
+      </div>
+
+      <button class="btn btn-success">
+        Create Recipe
+      </button>
+      or
+      <a href="/recipes">Cancel</a>
+    </form>
+  </div>
+</div>
