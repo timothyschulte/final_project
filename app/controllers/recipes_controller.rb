@@ -8,16 +8,15 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @genre = Genre.find(@recipe.genre_id)
+    
     render("recipes/show.html.erb")
   end
   
   def create_bookmark
     
     @bookmark = Bookmark.new
-
     @bookmark.user_id = params[:user_id]
     @bookmark.recipe_id = params[:recipe_id]
-
     save_status = @bookmark.save
 
     if save_status == true
@@ -32,6 +31,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new
     @genres = Genre.all
     @recipes_ingredients = RecipesIngredient.all
+  
     
     # @genre = Genre.find(@recipe.genre_id)
     render("recipes/new.html.erb")
@@ -47,6 +47,7 @@ class RecipesController < ApplicationController
     # @recipe.ingredients = params[:ingredients]
     @recipe.decription = params[:decription]
     @recipe.recipe_text = params[:recipe_text]
+    @recipe.img_location = params[:img_location]
 
     save_status = @recipe.save
 
@@ -64,6 +65,12 @@ class RecipesController < ApplicationController
     render("recipes/edit.html.erb")
   end
 
+
+  def favorites
+    @recipes = current_user.bookmarks
+    render("recipes/bookmark.html.erb")
+  end
+
   def update
     @recipe = Recipe.find(params[:id])
 
@@ -73,6 +80,7 @@ class RecipesController < ApplicationController
     @recipe.prep_time = params[:prep_time]
     @recipe.decription = params[:decription]
     @recipe.recipe_text = params[:recipe_text]
+    @recipe.img_location = params[:img_location]
 
     save_status = @recipe.save
 
@@ -88,10 +96,8 @@ class RecipesController < ApplicationController
 
     @recipe.destroy
 
-    if URI(request.referer).path == "/recipes/#{@recipe.id}"
+    URI(request.referer).path == "/recipes/#{@recipe.id}"
       redirect_to("/", :notice => "Recipe deleted.")
-    else
-      redirect_to(:back, :notice => "Recipe deleted.")
-    end
+    
   end
 end

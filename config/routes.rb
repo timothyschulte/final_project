@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
 root "recipes#index"
 
+
   devise_for :users
+  
+  
+  get "/my_bookmarks", :controller => "bookmarks", :action => "index2"
+  
+  get "/users", :controller => "users", :action => "index"
+  get "/users/:id", :controller => "users", :action => "show" 
+  
+  
   # Routes for the Bookmark resource:
   # CREATE
   get "/bookmarks/new", :controller => "bookmarks", :action => "new"

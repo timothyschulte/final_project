@@ -28,13 +28,8 @@
       </div>
 
       <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @recipe.user_id %>">
-      </div>
+      <input type="hidden" name="user_id" value="<%= current_user.id%>">
+      
 
 
       <!-- Label and input for genre_id -->
@@ -45,7 +40,25 @@
         <%= select_tag("genre_id", options_from_collection_for_select(Genre.all, :id, :genre_name, @genre.id), :class => "form-control") %>
       </div>
       
+      
+           <!-- Label and input for image -->
+      <div class="form-group">
+        <label for="decription" class="control-label">
+          Image
+        </label>
 
+        <input type="text" id="img_location" name="img_location" placeholder="Image URL" class="form-control" value="<%= @recipe.img_location %>">
+      </div>   
+      
+      
+      <!-- Label and input for decription -->
+      <div class="form-group">
+        <label for="decription" class="control-label">
+          Decription
+        </label>
+
+        <textarea id="decription" name="decription" placeholder="Decription" class="form-control" rows="3"><%= @recipe.decription %></textarea>
+      </div>
 
       <!-- Label and input for prep_time -->
       <div class="form-group">
@@ -56,14 +69,7 @@
         <input type="text" id="prep_time" name="prep_time" placeholder="Prep time" class="form-control" value="<%= @recipe.prep_time %>">
       </div>
 
-      <!-- Label and input for decription -->
-      <div class="form-group">
-        <label for="decription" class="control-label">
-          Decription
-        </label>
 
-        <textarea id="decription" name="decription" placeholder="Decription" class="form-control" rows="3"><%= @recipe.decription %></textarea>
-      </div>
 
       <!-- Label and input for recipe_text -->
       <div class="form-group">
@@ -74,7 +80,7 @@
         <textarea id="recipe_text" name="recipe_text" placeholder="Recipe text" class="form-control" rows="3"><%= @recipe.recipe_text %></textarea>
       </div>
 
-      <button class="btn btn-warning">
+      <button class="btn btn-info">
         Update Recipe
       </button>
       or

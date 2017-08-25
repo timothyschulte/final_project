@@ -2,15 +2,16 @@
 #
 # Table name: recipes
 #
-#  id          :integer          not null, primary key
-#  recipe_name :string
-#  user_id     :string
-#  genre_id    :integer
-#  prep_time   :string
-#  decription  :text
-#  recipe_text :text
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id           :integer          not null, primary key
+#  recipe_name  :string
+#  user_id      :string
+#  genre_id     :integer
+#  prep_time    :string
+#  decription   :text
+#  recipe_text  :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  img_location :string
 #
 
 class Recipe < ApplicationRecord

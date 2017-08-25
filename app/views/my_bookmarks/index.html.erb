@@ -14,7 +14,7 @@
         <th>Actions</th>
       </tr>
 
-      <% @bookmarks.each do |bookmark| %>
+      <% @bookmarks.where(:user_id => current_user.id).each do |bookmark| %>
       
       <tr>
         <td><%= User.find(bookmark.user_id).email %></td>

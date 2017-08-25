@@ -1,35 +1,29 @@
 <div class="page-header">
-  <h3>Genre #<%= @genre.id %></h3>
+  <h1><%= @genre.genre_name %></h1>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
+    <h3>Click on the recipes that are part of this genre.</h3>
     <dl class="dl-horizontal">
-      <dt>Genre name</dt>
-      <dd><%= @genre.genre_name %></dd>
-
-    </dl>
-
-
    <ul>
       <% Recipe.where(:genre_id => @genre.id ).each do |recipe| %>
         <li><a href="/recipes/<%= recipe.id %>"><%= recipe.recipe_name %></a></li>
         <% end %>
     </ul>
 
+    </dl>
+
+
+
+
 
 
 
     <div class="btn-group btn-group-justified">
-      <a href="/genres" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/genres/<%= @genre.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_genre/<%= @genre.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
+      <a href="/genres" class="btn btn-primary"><i class="material-icons" style="vertical-align: middle; font-size: 18px;">arrow_back</i> Back</a>
+      <a href="/genres/<%= @genre.id %>/edit" class="btn btn-success"><i class="material-icons" style="vertical-align: middle; font-size: 18px;">mode_edit</i> Edit</a>
+      <a href="/delete_genre/<%= @genre.id %>" class="btn btn-info" rel="nofollow"><i class="material-icons" style="vertical-align: middle; font-size: 18px;">delete</i> Delete</a>
     </div>
   </div>
 </div>

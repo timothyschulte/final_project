@@ -17,9 +17,9 @@
       <tr>
         <td><%= genre.genre_name %></td>
         <td>
-          <a href="/genres/<%= genre.id %>" class="btn btn-primary">Show</a>
-          <a href="/genres/<%= genre.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_genre/<%= genre.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/genres/<%= genre.id %>" class="btn btn-primary"><i class="material-icons" style="vertical-align: middle; font-size: 18px;">search</i>Show</a>
+          <a href="/genres/<%= genre.id %>/edit" class="btn btn-info"><i class="material-icons" style="vertical-align: middle; font-size: 18px;">mode_edit</i>Edit</a>
+          <a href="/delete_genre/<%= genre.id %>" class="btn btn-danger" rel="nofollow"><i class="material-icons" style="vertical-align: middle; font-size: 18px;">delete</i> Delete</a>
         </td>
       </tr>
       <% end %>

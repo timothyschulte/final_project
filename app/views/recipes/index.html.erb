@@ -10,26 +10,18 @@
     <table class="table table-striped table-hover">
       <tr>
         <th>Recipe name</th>
-        <th>User</th>
         <th>Genre</th>
-        <th>Prep time</th>
-        <th>Decription</th>
-        <th>Recipe text</th>
         <th>Actions</th>
       </tr>
 
       <% @recipes.each do |recipe| %>
       <tr>
         <td><%= recipe.recipe_name %></td>
-        <td><%= recipe.user_id %></td>
-        <td><%= recipe.genre_id %></td>
-        <td><%= recipe.prep_time %></td>
-        <td><%= recipe.decription %></td>
-        <td><%= recipe.recipe_text %></td>
+        <td><%= Genre.find(recipe.genre_id).genre_name %></td>
         <td>
-          <a href="/recipes/<%= recipe.id %>" class="btn btn-primary">Show</a>
-          <a href="/recipes/<%= recipe.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_recipe/<%= recipe.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/recipes/<%= recipe.id %>" class="btn btn-primary"><i class="material-icons" style="vertical-align: middle; font-size: 18px;">search</i>Show</a>
+          <a href="/recipes/<%= recipe.id %>/edit" class="btn btn-info"><i class="material-icons" style="vertical-align: middle; font-size: 18px;">mode_edit</i>Edit</a>
+          <a href="/delete_recipe/<%= recipe.id %>" class="btn btn-danger" rel="nofollow"><i class="material-icons" style="vertical-align: middle; font-size: 18px;">delete</i>Delete</a>
         </td>
       </tr>
       <% end %>

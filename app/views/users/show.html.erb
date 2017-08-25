@@ -14,14 +14,10 @@
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/users" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/users/<%= @user.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
+      <a href="/users" class="btn btn-primary"><i class="material-icons" style="vertical-align: middle; font-size: 18px;">arrow_back</i> Back</a>
+      <a href="/users/<%= @user.id %>/edit" class="btn btn-info"><i class="material-icons" style="vertical-align: middle; font-size: 18px;">mode_edit</i> Edit</a>
       <a href="/delete_user/<%= @user.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
+        <i class="material-icons" style="vertical-align: middle; font-size: 18px;">delete</i> Delete
       </a>
     </div>
   </div>
