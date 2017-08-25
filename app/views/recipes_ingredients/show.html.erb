@@ -1,0 +1,26 @@
+<div class="page-header">
+  <h3>Recipes Ingredient #<%= @recipes_ingredient.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Recipe</dt>
+      <dd><%= @recipes_ingredient.recipe_id %></dd>
+
+      <dt>Ingredient</dt>
+      <dd><%= @recipes_ingredient.ingredient_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/recipes_ingredients" class="btn btn-primary"><i class="material-icons" style="vertical-align: middle; font-size: 18px;">arrow_back</i> Back</a>
+      <a href="/recipes_ingredients/<%= @recipes_ingredient.id %>/edit" class="btn btn-info">
+        <i class="material-icons" style="vertical-align: middle; font-size: 18px;">mode_edit</i>Edit
+      </a>
+      <a href="/delete_recipes_ingredient/<%= @recipes_ingredient.id %>" class="btn btn-danger" rel="nofollow">
+        <i class="material-icons" style="vertical-align: middle; font-size: 18px;">delete</i>Delete
+      </a>
+    </div>
+  </div>
+</div>
